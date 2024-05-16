@@ -1,0 +1,13 @@
+---
+import fs from 'node:fs/promises';
+import { MDXEditor } from "../components/editor";
+
+const url = new URL("./about.mdx", import.meta.url);
+const mdxFileContent = await fs.readFile(url, "utf-8");
+---
+
+<MDXEditor
+  markdown={mdxFileContent}
+  contentEditableClassName="prose"
+  client:only="react"
+/>
